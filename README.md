@@ -202,6 +202,91 @@ Check the validity of the configuration file:
 
    `http://<your-prometheus-ip>:9090/targets`
 
+## Phase 2: Install and Configure Prometheus in Django
+
+### 1. Install Prometheus Client for Django
+
+In your Django project, install the Prometheus client:
+
+```bash
+pip install django-prometheus
+```
+
+### 2. Configure Django Settings
+
+Modify `settings.py` to add `django_prometheus`:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django_prometheus',  # Add this line
+]
+```
+
+### 3. Update Middleware and Database Configuration
+
+Modify `settings.py` to include Prometheus middleware:
+
+```python
+MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
+]
+```
+
+### 4. Update URLs to Expose Metrics
+
+Modify `urls.py` to add the Prometheus metrics endpoint:
+
+```python
+from django.urls import path, include
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("django_prometheus.urls")),  # Add this line
+]
+```
+
+---
+
+## Step 2: Setup Prometheus
+
+### 1. Create `prometheus.yml` Configuration File
+
+Create a `prometheus.yml` file to scrape Django metrics:
+
+```yaml
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "django_app"
+    scrape_interval: 5s
+    metrics_path: "/metrics/"
+    static_configs:
+      - targets: ["<ip_address>:8000"]
+    scheme: http
+
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["prometheus:9090"]
+
+  - job_name: "node_exporter"
+    static_configs:
+      - targets: ["node_exporter:9100"]
+```
 
 ####Grafana
 
@@ -314,4 +399,3 @@ You should now have a Grafana dashboard set up to visualize metrics from Prometh
 Grafana is a powerful tool for creating visualizations and dashboards, and you can further customize it to suit your specific monitoring needs.
 
 That's it! You've successfully installed and set up Grafana to work with Prometheus for monitoring and visualization.
-
