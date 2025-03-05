@@ -399,3 +399,8 @@ You should now have a Grafana dashboard set up to visualize metrics from Prometh
 Grafana is a powerful tool for creating visualizations and dashboards, and you can further customize it to suit your specific monitoring needs.
 
 That's it! You've successfully installed and set up Grafana to work with Prometheus for monitoring and visualization.
+
+----
+!(2.JPG)[Grafana-dashboard-1]
+----
+!(3.JPG)[Grafana-dashboard-2]
