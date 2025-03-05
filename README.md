@@ -28,7 +28,7 @@
     sudo chmod 777 /var/run/docker.sock
     ```
 
-**Phase 2: Monitoring**
+## **Phase 2: Monitoring**
 
 1. **Install Prometheus and Grafana:**
 
@@ -202,7 +202,7 @@ Check the validity of the configuration file:
 
    `http://<your-prometheus-ip>:9090/targets`
 
-## Phase 2: Install and Configure Prometheus in Django
+## Phase 3: Install and Configure Prometheus in Django
 
 ### 1. Install Prometheus Client for Django
 
