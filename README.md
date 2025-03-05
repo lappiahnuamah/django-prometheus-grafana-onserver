@@ -201,7 +201,9 @@ Check the validity of the configuration file:
    You can access Prometheus targets at:
 
    `http://<your-prometheus-ip>:9090/targets`
-
+----
+![Prometheus](1.JPG)
+---
 ## Phase 3: Install and Configure Prometheus in Django
 
 ### 1. Install Prometheus Client for Django
@@ -288,7 +290,7 @@ scrape_configs:
       - targets: ["localhost:9100"]
 ```
 
-####Grafana
+## Phase 4: Grafana
 
 **Install Grafana on Ubuntu 22.04 and Set it up to Work with Prometheus**
 
@@ -401,6 +403,6 @@ Grafana is a powerful tool for creating visualizations and dashboards, and you c
 That's it! You've successfully installed and set up Grafana to work with Prometheus for monitoring and visualization.
 
 ----
-!(2.JPG)[Grafana-dashboard-1]
+![Grafana-dashboard-1](2.JPG)
 ----
-!(3.JPG)[Grafana-dashboard-2]
+![Grafana-dashboard-2](3.JPG)
