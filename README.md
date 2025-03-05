@@ -202,7 +202,7 @@ Check the validity of the configuration file:
 
    `http://<your-prometheus-ip>:9090/targets`
 ----
-![Prometheus](1.JPG)
+![Prometheus](n1.JPG)
 ---
 ## Phase 3: Install and Configure Prometheus in Django
 
@@ -403,6 +403,6 @@ Grafana is a powerful tool for creating visualizations and dashboards, and you c
 That's it! You've successfully installed and set up Grafana to work with Prometheus for monitoring and visualization.
 
 ----
-![Grafana-dashboard-1](2.JPG)
+![Grafana-dashboard-1](n2.JPG)
 ----
-![Grafana-dashboard-2](3.JPG)
+![Grafana-dashboard-2](n3.JPG)
