@@ -274,18 +274,18 @@ global:
 scrape_configs:
   - job_name: "django_app"
     scrape_interval: 5s
-    metrics_path: "/metrics/"
+    metrics_path: "/metrics"
     static_configs:
       - targets: ["<ip_address>:8000"]
     scheme: http
 
   - job_name: "prometheus"
     static_configs:
-      - targets: ["prometheus:9090"]
+      - targets: ["localhost:9090"]
 
   - job_name: "node_exporter"
     static_configs:
-      - targets: ["node_exporter:9100"]
+      - targets: ["localhost:9100"]
 ```
 
 ####Grafana
